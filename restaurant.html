@@ -1,0 +1,158 @@
+@"
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Sifuna Delights — Restaurant</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Site styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+    <div class="container">
+      <a class="navbar-brand" href="#">Sifuna Delights</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMenu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section id="home" class="hero d-flex align-items-center text-center text-white">
+    <div class="container">
+      <h1 class="display-4 fw-bold">Taste Authentic Flavors</h1>
+      <p class="lead mb-4">Crafted from tradition — fresh, warm, and unforgettable.</p>
+      <a class="btn btn-light btn-lg" href="#menu">See Menu</a>
+    </div>
+  </section>
+
+  <!-- Menu Section -->
+  <section id="menu" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Our Menu</h2>
+      <div class="row g-4">
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://lowcarbafrica.com/wp-content/uploads/2022/10/Nyama-Choma-Kenyan-Grilled-Goat-Meat-3.webp" class="card-img-top" alt="Dish 1">
+            <div class="card-body">
+              <h5 class="card-title">Nyama Choma Platter</h5>
+              <p class="card-text">Grilled meat served with ugali, kachumbari and fresh greens.</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span class="fw-bold">Ksh 900</span>
+              <a href="#" class="btn btn-sm btn-outline-danger">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://mydominicankitchen.com/wp-content/uploads/2021/08/Fish-in-Coconut-Sauce-My-Dominican-Kitchen-2.jpg" class="card-img-top" alt="Dish 2">
+            <div class="card-body">
+              <h5 class="card-title">Fish Curry</h5>
+              <p class="card-text">Fresh fish simmered in a rich coconut and spice sauce.</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span class="fw-bold">Ksh 750</span>
+              <a href="#" class="btn btn-sm btn-outline-danger">Order</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card h-100 shadow-sm">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2xrkiMyKr-S82_TTRi1EqaIWx_d0J66iTHA&s" class="card-img-top" alt="Dish 3">
+            <div class="card-body">
+              <h5 class="card-title">Vegetarian Githeri</h5>
+              <p class="card-text">A wholesome mix of maize and beans with seasonal vegetables.</p>
+            </div>
+            <div class="card-footer d-flex justify-content-between align-items-center">
+              <span class="fw-bold">Ksh 500</span>
+              <a href="#" class="btn btn-sm btn-outline-danger">Order</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="mb-4 text-center">About Us</h2>
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <img src="https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=1200" class="img-fluid rounded" alt="Kitchen">
+        </div>
+        <div class="col-md-6">
+          <p>Sifuna Delights celebrates East African tradition with locally sourced ingredients, family recipes, and a warm dining atmosphere. We blend time-honored techniques with modern presentation to deliver a memorable meal to every guest.</p>
+          <p class="mb-0">Open daily for lunch and dinner — reservations recommended on weekends.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-5">
+    <div class="container">
+      <h2 class="mb-4 text-center">Contact</h2>
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <form class="row g-3 needs-validation" novalidate>
+            <div class="col-md-6">
+              <label class="form-label">Name</label>
+              <input type="text" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" class="form-control" required>
+            </div>
+            <div class="col-12">
+              <label class="form-label">Message</label>
+              <textarea class="form-control" rows="4" required></textarea>
+            </div>
+            <div class="col-12 text-end">
+              <button class="btn btn-danger" type="submit">Send Message</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-3 bg-dark text-white">
+    <div class="container d-flex justify-content-between align-items-center">
+      <small>&copy; 2026 Sifuna Delights</small>
+      <div>
+        <a class="text-white me-2" href="#"><i class="bi bi-facebook"></i></a>
+        <a class="text-white me-2" href="#"><i class="bi bi-instagram"></i></a>
+        <a class="text-white" href="#"><i class="bi bi-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating hearts script -->
+  <script src="hearts.js"></script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+"@ | Out-File -FilePath .\restaurant.html -Encoding utf8
