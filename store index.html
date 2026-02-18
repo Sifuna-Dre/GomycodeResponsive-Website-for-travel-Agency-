@@ -1,0 +1,1168 @@
+<!--
+  ============================================================
+  RESPONSIVE STORE LANDING PAGE
+  ============================================================
+  Project: E-Commerce Store Landing Page
+  Purpose: Create a responsive, visually appealing online store
+  Technologies: HTML5, CSS3, Bootstrap 5
+  
+  Design Choices:
+  - Bootstrap 5 for responsive grid system and components
+  - Modern color scheme (navy, gold, white)
+  - Product cards with hover effects
+  - Mobile-first responsive design
+  - Clean navigation with smooth transitions
+  ============================================================
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tags for character encoding and viewport -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EliteStore - Premium Online Shopping</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <style>
+        /* ============================================================
+           GLOBAL STYLES
+           ============================================================ */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Font and color variables */
+        :root {
+            --primary-color: #1a3a52;  /* Navy Blue */
+            --secondary-color: #d4af37; /* Gold */
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --text-color: #333;
+            --border-color: #e0e0e0;
+            --transition: all 0.3s ease;
+        }
+
+        /* Body styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--light-color);
+        }
+
+        /* ============================================================
+           HEADER & NAVIGATION
+           ============================================================ */
+        
+        /* Header styling */
+        .store-header {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo styling */
+        .store-logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .store-logo:hover {
+            color: #fff;
+        }
+
+        /* Navigation menu */
+        .navbar-nav .nav-link {
+            color: #fff !important;
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        /* Navigation link hover effect */
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: var(--secondary-color) !important;
+        }
+
+        /* Navigation link underline effect */
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .navbar-nav .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu toggle button */
+        .navbar-toggler {
+            border-color: var(--secondary-color);
+        }
+
+        .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.25rem rgba(212, 175, 55, 0.25);
+        }
+
+        /* ============================================================
+           HERO SECTION
+           ============================================================ */
+        
+        /* Hero section styling */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c5aa0 100%);
+            color: white;
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Video background alternative */
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 40%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1557821552-17105176677c?w=600') no-repeat right center;
+            background-size: cover;
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        /* Hero content */
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero title */
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        /* Hero subtitle */
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        /* CTA Button */
+        .btn-primary-custom {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 0.75rem 2.5rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary-custom:hover {
+            background-color: #fff;
+            color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        /* ============================================================
+           PRODUCT SECTION
+           ============================================================ */
+        
+        /* Section styling */
+        .section-padding {
+            padding: 5rem 0;
+        }
+
+        /* Section title */
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        /* Section subtitle */
+        .section-subtitle {
+            color: #666;
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Product card */
+        .product-card {
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Product card hover effect */
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            border-color: var(--secondary-color);
+        }
+
+        /* Product image */
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        /* Product image container (for overflow hidden) */
+        .product-image-container {
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+        }
+
+        /* Sale badge */
+        .sale-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: #e74c3c;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            z-index: 10;
+        }
+
+        /* Product details */
+        .product-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Product category */
+        .product-category {
+            color: var(--secondary-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Product name */
+        .product-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.7rem;
+        }
+
+        /* Product description */
+        .product-description {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        /* Product price section */
+        .product-price-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+
+        /* Product price */
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--secondary-color);
+        }
+
+        /* Original price (strikethrough) */
+        .product-original-price {
+            color: #999;
+            text-decoration: line-through;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Star rating */
+        .product-rating {
+            font-size: 0.9rem;
+            color: #f39c12;
+        }
+
+        /* Product button */
+        .btn-shop {
+            background-color: var(--primary-color);
+            color: white;
+            border: 2px solid var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            font-weight: 700;
+            border-radius: 6px;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .btn-shop:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border-color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        /* ============================================================
+           FEATURES SECTION
+           ============================================================ */
+        
+        /* Features section */
+        .features-section {
+            background-color: #f0f3f7;
+        }
+
+        /* Feature item */
+        .feature-item {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        /* Feature icon */
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Feature title */
+        .feature-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Feature description */
+        .feature-description {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* ============================================================
+           NEWSLETTER SECTION
+           ============================================================ */
+        
+        /* Newsletter section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-color) 0%, #2c5aa0 100%);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        /* Newsletter title */
+        .newsletter-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* Newsletter form */
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        /* Newsletter input */
+        .newsletter-input {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Newsletter button */
+        .btn-newsletter {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-weight: 700;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-newsletter:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+        }
+
+        /* ============================================================
+           FOOTER
+           ============================================================ */
+        
+        /* Footer */
+        .store-footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        /* Footer section title */
+        .footer-section-title {
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Footer link */
+        .footer-link {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            margin-bottom: 0.7rem;
+            display: block;
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--secondary-color);
+            margin-left: 0.5rem;
+        }
+
+        /* Social icons */
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Social icon */
+        .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: var(--transition);
+        }
+
+        .social-icon:hover {
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+        }
+
+        /* Footer bottom */
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ============================================================
+           RESPONSIVE DESIGN - MEDIA QUERIES
+           ============================================================ */
+        
+        /* Tablets and below */
+        @media (max-width: 768px) {
+            /* Hero section adjustments */
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .hero-section::before {
+                opacity: 0.05;
+            }
+
+            /* Section title adjustments */
+            .section-title {
+                font-size: 2rem;
+            }
+
+            /* Product grid adjustments */
+            .product-card {
+                margin-bottom: 1.5rem;
+            }
+
+            /* Newsletter form adjustments */
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-input,
+            .btn-newsletter {
+                width: 100%;
+            }
+
+            /* Footer column adjustments */
+            .footer-col {
+                margin-bottom: 2rem;
+            }
+
+            /* Navbar adjustments */
+            .navbar-nav .nav-link {
+                margin: 0.5rem 0;
+            }
+
+            .navbar-nav .nav-link::after {
+                display: none;
+            }
+        }
+
+        /* Mobile devices */
+        @media (max-width: 576px) {
+            /* Hero section */
+            .hero-section {
+                padding: 4rem 0;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            /* Section title */
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Product image height */
+            .product-image {
+                height: 200px;
+            }
+
+            .product-image-container {
+                height: 200px;
+            }
+
+            /* Product card padding */
+            .product-body {
+                padding: 1rem;
+            }
+
+            /* Product name */
+            .product-name {
+                font-size: 1.1rem;
+            }
+
+            /* Product description */
+            .product-description {
+                font-size: 0.85rem;
+            }
+
+            /* Features section */
+            .feature-item {
+                padding: 1.5rem 0.5rem;
+            }
+
+            /* Newsletter section */
+            .newsletter-section {
+                padding: 2rem 0;
+            }
+
+            .newsletter-title {
+                font-size: 1.5rem;
+            }
+
+            /* Footer */
+            .footer-section-title {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            .footer-link {
+                font-size: 0.9rem;
+                margin-bottom: 0.5rem;
+            }
+
+            /* Store header padding */
+            .store-header {
+                padding: 1rem 0;
+            }
+
+            .store-logo {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* Extra small devices */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .product-price {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ============================================================
+         HEADER & NAVIGATION
+         ============================================================ -->
+    <header class="store-header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <!-- Logo -->
+                <a class="store-logo" href="#home">
+                    <i class="fas fa-shopping-bag"></i>
+                    EliteStore
+                </a>
+
+                <!-- Mobile menu toggle -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Navigation menu -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#products">Products</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#features">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ============================================================
+         HERO SECTION
+         ============================================================ -->
+    <section class="hero-section" id="home">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 hero-content">
+                    <!-- Hero title -->
+                    <h1 class="hero-title">Welcome to EliteStore</h1>
+                    
+                    <!-- Hero subtitle -->
+                    <p class="hero-subtitle">
+                        Discover premium quality products at unbeatable prices. Shop the latest trends and styles across all categories.
+                    </p>
+
+                    <!-- CTA Button -->
+                    <a href="#products" class="btn-primary-custom">
+                        <i class="fas fa-arrow-right"></i> Shop Now
+                    </a>
+                </div>
+
+                <!-- Hero image (optional) -->
+                <div class="col-lg-6 d-none d-lg-block text-center">
+                    <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=500&q=80" alt="Shopping" class="img-fluid" style="border-radius: 12px; opacity: 0.9;">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         PRODUCTS SECTION
+         ============================================================ -->
+    <section class="section-padding" id="products">
+        <div class="container">
+            <!-- Section title -->
+            <h2 class="section-title">Featured Products</h2>
+            <p class="section-subtitle">Check out our latest collection of premium items</p>
+
+            <!-- Product grid -->
+            <div class="row g-4">
+                <!-- Product 1: Wireless Headphones -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <!-- Product image container -->
+                        <div class="product-image-container position-relative">
+                            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Wireless Headphones" class="product-image">
+                            <!-- Sale badge -->
+                            <span class="sale-badge">-20%</span>
+                        </div>
+
+                        <!-- Product details -->
+                        <div class="product-body">
+                            <p class="product-category">Electronics</p>
+                            <h3 class="product-name">Wireless Headphones</h3>
+                            <p class="product-description">
+                                Premium noise-cancelling headphones with 30-hour battery life and premium sound quality.
+                            </p>
+
+                            <!-- Rating and price -->
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="product-price">$79.99</span>
+                                    <div class="product-original-price">$99.99</div>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+
+                            <!-- Shop button -->
+                            <a href="#" class="btn-shop">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2: Smart Watch -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-image-container position-relative">
+                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Smart Watch" class="product-image">
+                            <span class="sale-badge">-15%</span>
+                        </div>
+
+                        <div class="product-body">
+                            <p class="product-category">Wearables</p>
+                            <h3 class="product-name">Smart Watch Pro</h3>
+                            <p class="product-description">
+                                Advanced fitness tracking with heart rate monitor, GPS, and 7-day battery life.
+                            </p>
+
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="product-price">$199.99</span>
+                                    <div class="product-original-price">$235.99</div>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-shop">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3: Camera -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-image-container position-relative">
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsqMnx1e9_I8s315DeH8YXLC_XTsadHmgeMQ&s" alt="Professional Camera" class="product-image">
+                            <span class="sale-badge">-25%</span>
+                        </div>
+
+                        <div class="product-body">
+                            <p class="product-category">Photography</p>
+                            <h3 class="product-name">Pro Camera 4K</h3>
+                            <p class="product-description">
+                                Professional 4K camera with advanced autofocus, weather-sealed body, and excellent low-light performance.
+                            </p>
+
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="product-price">$899.99</span>
+                                    <div class="product-original-price">$1,199.99</div>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-shop">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4: Portable Speaker -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-image-container position-relative">
+                            <img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=400&q=80" alt="Portable Speaker" class="product-image">
+                            <span class="sale-badge">-10%</span>
+                        </div>
+
+                        <div class="product-body">
+                            <p class="product-category">Audio</p>
+                            <h3 class="product-name">Portable Speaker X</h3>
+                            <p class="product-description">
+                                Waterproof portable speaker with 360-degree sound, 20-hour battery, and Bluetooth 5.0 connectivity.
+                            </p>
+
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="product-price">$119.99</span>
+                                    <div class="product-original-price">$133.99</div>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-shop">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5: Tablet -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-image-container position-relative">
+                            <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=400&q=80" alt="Tablet" class="product-image">
+                            <span class="sale-badge">-30%</span>
+                        </div>
+
+                        <div class="product-body">
+                            <p class="product-category">Computing</p>
+                            <h3 class="product-name">Premium Tablet</h3>
+                            <p class="product-description">
+                                10-inch display with 120Hz refresh rate, powerful processor, and all-day battery life.
+                            </p>
+
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="product-price">$349.99</span>
+                                    <div class="product-original-price">$499.99</div>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-shop">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6: Laptop Backpack -->
+                <div class="col-lg-3 col-md-6 col-sm-12">
+                    <div class="product-card">
+                        <div class="product-image-container position-relative">
+                            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&q=80" alt="Laptop Backpack" class="product-image">
+                            <span class="sale-badge">-18%</span>
+                        </div>
+
+                        <div class="product-body">
+                            <p class="product-category">Accessories</p>
+                            <h3 class="product-name">Pro Laptop Backpack</h3>
+                            <p class="product-description">
+                                Durable travel backpack with multiple compartments, USB charging port, and weather protection.
+                            </p>
+
+                            <div class="product-price-section">
+                                <div>
+                                    <span class="product-price">$59.99</span>
+                                    <div class="product-original-price">$73.99</div>
+                                </div>
+                                <div class="product-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+
+                            <a href="#" class="btn-shop">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FEATURES SECTION
+         ============================================================ -->
+    <section class="features-section section-padding" id="features">
+        <div class="container">
+            <h2 class="section-title mb-5">Why Choose EliteStore?</h2>
+
+            <div class="row">
+                <!-- Feature 1: Fast Shipping -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h3 class="feature-title">Fast Shipping</h3>
+                        <p class="feature-description">
+                            Free shipping on orders over $50. Get your products delivered within 3-5 business days.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 2: Secure Payment -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3 class="feature-title">Secure Payment</h3>
+                        <p class="feature-description">
+                            Your payments are protected with SSL encryption and multiple payment options available.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 3: Customer Support -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h3 class="feature-title">24/7 Support</h3>
+                        <p class="feature-description">
+                            Our dedicated support team is available 24/7 to help you with any questions or concerns.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Easy Returns -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h3 class="feature-title">Easy Returns</h3>
+                        <p class="feature-description">
+                            30-day money-back guarantee. Return products hassle-free within 30 days of purchase.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         NEWSLETTER SECTION
+         ============================================================ -->
+    <section class="newsletter-section" id="contact">
+        <div class="container">
+            <!-- Newsletter title -->
+            <h2 class="newsletter-title">Get Exclusive Deals</h2>
+            <p style="margin-bottom: 2rem; opacity: 0.95;">
+                Subscribe to our newsletter and get 10% off your first purchase
+            </p>
+
+            <!-- Newsletter form -->
+            <form class="newsletter-form">
+                <input 
+                    type="email" 
+                    class="newsletter-input" 
+                    placeholder="Enter your email address" 
+                    required
+                    aria-label="Email address"
+                >
+                <button type="submit" class="btn-newsletter">
+                    <i class="fas fa-envelope"></i> Subscribe
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer class="store-footer">
+        <div class="container">
+            <div class="row">
+                <!-- Footer column 1: About -->
+                <div class="col-lg-3 col-md-6 footer-col">
+                    <h4 class="footer-section-title">About EliteStore</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        EliteStore is your one-stop destination for premium quality products at competitive prices. Shop with confidence and style.
+                    </p>
+                    <!-- Social icons -->
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer column 2: Quick Links -->
+                <div class="col-lg-3 col-md-6 footer-col">
+                    <h4 class="footer-section-title">Quick Links</h4>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#products" class="footer-link">Products</a>
+                    <a href="#features" class="footer-link">Features</a>
+                    <a href="#" class="footer-link">About Us</a>
+                    <a href="#" class="footer-link">Blog</a>
+                </div>
+
+                <!-- Footer column 3: Support -->
+                <div class="col-lg-3 col-md-6 footer-col">
+                    <h4 class="footer-section-title">Support</h4>
+                    <a href="#" class="footer-link">Contact Us</a>
+                    <a href="#" class="footer-link">FAQ</a>
+                    <a href="#" class="footer-link">Shipping Info</a>
+                    <a href="#" class="footer-link">Returns</a>
+                    <a href="#" class="footer-link">Privacy Policy</a>
+                </div>
+
+                <!-- Footer column 4: Contact -->
+                <div class="col-lg-3 col-md-6 footer-col">
+                    <h4 class="footer-section-title">Contact Us</h4>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                        <i class="fas fa-map-marker-alt"></i> 123 Business Street, City, Country
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.8); margin-bottom: 1rem;">
+                        <i class="fas fa-phone"></i> +1 (555) 123-4567
+                    </p>
+                    <p style="color: rgba(255, 255, 255, 0.8);">
+                        <i class="fas fa-envelope"></i> support@elitestore.com
+                    </p>
+                </div>
+            </div>
+
+            <!-- Footer bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 EliteStore. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--secondary-color);"></i> by EliteStore Team</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Newsletter form submission
+        document.querySelector('.newsletter-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            if (email) {
+                alert('Thank you for subscribing! Check your email for the 10% discount code.');
+                this.reset();
+            }
+        });
+
+        // Shop Now button alert
+        document.querySelectorAll('.btn-shop').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                alert('Adding to cart! (Feature coming soon)');
+            });
+        });
+    </script>
+</body>
+</html>
