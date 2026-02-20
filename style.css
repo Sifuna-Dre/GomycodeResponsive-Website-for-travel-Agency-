@@ -141,3 +141,85 @@ table.bordered tr:hover {
   text-align: center;
   padding: 1em;
 }
+
+/* Shared custom styles for the Bootstrap pages */
+
+/* Hero for restaurant */
+/* CSS */
+.hero {
+  height: 100vh;
+  background: url('dish.jpg') no-repeat center center/cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(201, 10, 10, 0.4);
+  background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1200') 
+            no-repeat center center/cover;
+
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.hero a.btn {
+  padding: 12px 24px;
+  border-radius: 5px;
+}
+
+
+
+/* Travel hero */
+.travel-hero {
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1600');
+  background-size: cover;
+  background-position: center;
+  min-height: 60vh;
+}
+
+/* Cards */
+.card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+/* Floating hearts */
+.heart {
+  position: fixed;
+  bottom: -40px;
+  font-size: 20px;
+  pointer-events: none;
+  animation-name: floatUp;
+  animation-timing-function: linear;
+  opacity: 0.95;
+  transform: translateY(0) scale(1);
+  will-change: transform, opacity;
+  z-index: 9999;
+  text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+}
+
+/* Small responsive tweaks */
+@media (max-width: 767px) {
+  .card img { height: 160px; }
+  .hero, .travel-hero { min-height: 45vh; }
+}
